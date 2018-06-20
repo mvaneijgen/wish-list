@@ -1,0 +1,112 @@
+body {
+  background: $brand-one; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    -45deg,
+    $brand-one,
+    darken($brand-one, 10%),
+    darken($brand-one, 20%)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    -45deg,
+    $brand-one,
+    darken($brand-one, 10%),
+    darken($brand-one, 20%)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.alloy-list .inner,
+.alloy-cards {
+  box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+}
+.alloy-list,
+.alloy-cards {
+  position: relative;
+  margin-bottom: $base-margin * 2;
+  border-radius: 0 0 $base-margin / 3 $base-margin / 3;
+  // overflow: hidden;
+
+  @include media-breakpoint-up(md) {
+    &.alloy-cards--large {
+      margin-bottom: $base-margin * 4;
+    }
+  }
+
+  h1 {
+    color: inherit;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .inner {
+    padding: $base-margin;
+    background-color: $brand-light;
+  }
+}
+.alloy-list {
+  &.active {
+    .inner {
+      // background-color: $brand-two;
+    }
+  }
+  .inner {
+    background-color: $brand-light;
+  }
+}
+
+.container {
+  padding-top: $base-margin;
+
+  > .row {
+    padding-bottom: $base-margin;
+  }
+}
+
+.padding--medium {
+  padding-top: $base-margin;
+
+  .row {
+    padding-bottom: $base-margin;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .container {
+    padding-top: $base-margin * 2;
+
+    > .row {
+      padding-bottom: $base-margin * 2;
+    }
+  }
+
+  .padding--medium {
+    padding-top: $base-margin;
+
+    .row {
+      padding-bottom: $base-margin;
+    }
+  }
+}
+
+.padding--none {
+  padding-top: 0;
+
+  .row {
+    padding-bottom: 0;
+  }
+}
+
+.padding--none--gutter {
+  padding: 0;
+
+  > .row {
+    padding: 0;
+
+    > [class^='col-'] {
+      padding: 0;
+    }
+  }
+}
