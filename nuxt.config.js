@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   router: {
-    base: '/wishlist/',
+    base: '/wish-list/',
   },
   css: ['@/assets/css/main.scss'],
   head: {
