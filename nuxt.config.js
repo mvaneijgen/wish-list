@@ -6,8 +6,10 @@ module.exports = {
     // base: '/wish-list/',
   },
   generate: {
-    base: '/wish-list/',
     dir: 'docs',
+    router: {
+      base: '/wish-list/',
+    },
   },
   css: ['@/assets/css/main.scss'],
   head: {
