@@ -1,13 +1,18 @@
 <template>
-  <div class="alloy-cards">
+  <div id="currentItem" class="alloy-cards alloy-current-item">
     <div class="inner">
-      <img :src="item.img" alt="">
-    </div>
-    <div class="inner">
-      <h2>{{ item.title }} </h2>
-      <span> {{ item.price }}</span>
-      <p>{{ item.description }}</p>
-      <i>{{ item.place }}</i>
+
+      <div class="alloy-image">
+        <img :src="item.img" alt="">
+      </div>
+
+      <div class="alloy-content">
+        <h2 class="alloy-title">{{ item.title }} </h2>
+        <span class="price"> {{ item.price }}</span>
+        <p>{{ item.description }} <span class="location">{{ item.place }}</span></p>
+
+      </div>
+
     </div>
   </div>
 </template>
@@ -26,8 +31,24 @@ export default {
   // watch: {},
 
   // // Live cicle hook. Check for more https://vuejs.org/v2/api/
-  // created: {}, // Each time the app is created (once?)
-  // mounted: {}, // Be sure all elements are drawn
+  created() {}, // Each time the app is created (once?)
+  mounted() {
+    window.addEventListener('scroll', event => {
+      // console.log(event);
+      const currentItem = document.querySelector('#currentItem');
+      const main = document.querySelector('main');
+      const scrollPos =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const elementPos = currentItem.offsetTop;
+      console.log(scrollPos + ' ' + elementPos);
+      if (scrollPos + 20 >= elementPos) {
+        main.classList.add('fixed');
+      }
+      if (scrollPos - 60 < elementPos) {
+        main.classList.remove('fixed');
+      }
+    });
+  }, // Be sure all elements are drawn
 };
 </script>
 

@@ -7,6 +7,7 @@ export default function({ params, store }) {
   return axios
     .get(`https://beta.todoist.com/API/v8/tasks?project_id=2187923865`)
     .then(response => {
+      // console.log(response);
       const allItems = response.data;
 
       let resultItems = [];
@@ -25,12 +26,16 @@ export default function({ params, store }) {
         resultItems.push(itemObj);
       });
       store.commit('add', resultItems);
+    })
+    .catch(function(error) {
+      store.commit('error', error);
+      // console.log(error);
     });
 
-  return axios
-    .get(`https://beta.todoist.com/API/v8/projects/2187923865`)
-    .then(response => {
-      store.commit('description', response.data);
-      console.log(response);
-    });
+  // return axios
+  //   .get(`https://beta.todoist.com/API/v8/projects/2187923865`)
+  //   .then(response => {
+  //     store.commit('description', response.data);
+  //     console.log(response);
+  //   });
 }

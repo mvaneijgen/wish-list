@@ -15,6 +15,7 @@ const createStore = () => {
         state.items = payload;
         state.currentItem = payload[0];
       },
+      error(state, payload) {},
       description(state, payload) {
         state.description = payload;
       },

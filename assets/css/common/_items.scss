@@ -1,0 +1,242 @@
+.alloy-list-items,
+.alloy-cards {
+  box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+}
+
+.alloy-cards {
+  position: relative;
+  margin-bottom: $base-margin * 2;
+  .alloy-image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .alloy-content {
+    padding: $base-margin;
+    background-color: $brand-light;
+
+    .price {
+      padding: $base-margin / 2 $base-margin;
+      position: absolute;
+      background-color: $brand-one;
+      color: $brand-light;
+      font-weight: 800;
+      top: 0;
+      right: 0;
+    }
+    span {
+      color: rgba($brand-dark, $base-alpha);
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .alloy-min-height {
+    min-height: 213px;
+  }
+  main.fixed {
+    .alloy-cards {
+      position: fixed;
+      left: $base-margin;
+      top: $base-margin;
+      margin-right: $base-margin;
+      z-index: 100;
+
+      animation-name: fade;
+      animation-duration: 600ms;
+      animation-delay: 0s;
+      animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
+      animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
+      animation-iteration-count: 1; // infinite or number
+      animation-fill-mode: both; // none, forwards, backwards, both
+      animation-play-state: running; // running, paused
+    }
+  }
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .alloy-cards {
+    transition: top;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+
+    background-color: $brand-light;
+
+    .inner {
+      position: relative;
+      // > * {
+      //   display: inline-block;
+      //   vertical-align: top;
+      // }
+      .alloy-image {
+        width: 50px;
+        position: absolute;
+      }
+      .alloy-content {
+        // width: auto;
+        padding-left: 60px;
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .alloy-cards {
+    .inner {
+      padding-bottom: 200px;
+    }
+    .alloy-content {
+      padding: $base-margin * 2;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      min-height: 200px;
+      border-top: 8px solid $brand-one;
+      .alloy-title {
+        position: absolute;
+        top: -50px;
+        background: $brand-one;
+        padding: $base-margin / 2 $base-margin;
+        left: $base-margin * 2;
+        color: #fff;
+      }
+      .price {
+        padding: $base-margin / 2 $base-margin;
+        position: absolute;
+        top: -50px;
+        right: $base-margin * 2;
+      }
+      .location {
+        display: block;
+        margin-top: $base-margin;
+      }
+    }
+  }
+  .alloy-list-items {
+    &.active {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.alloy-list-items {
+  background-color: rgba($brand-light, $base-alpha/2);
+  background-color: $brand-one;
+  margin-bottom: $base-margin * 2;
+  width: 100%;
+  transition: transform, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+
+  &.active {
+    background-color: rgba($brand-light, 1);
+    // transform: scale(1.02);
+    .alloy-title {
+      margin-bottom: 0;
+      color: $brand-one;
+      text-shadow: 2px 2px 10px rgba($brand-dark, $base-alpha/2);
+    }
+  }
+  .alloy-title {
+    margin-bottom: 0;
+    color: $brand-light;
+    text-shadow: 2px 2px 10px rgba($brand-dark, $base-alpha/2);
+  }
+  .inner {
+    overflow: hidden;
+    > * {
+      vertical-align: top;
+    }
+  }
+  .alloy-image {
+    max-width: 65px;
+    max-height: 65px;
+    display: inline-block;
+    position: relative;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .alloy-content {
+    padding: $base-margin;
+    // background-color: $brand-grey;
+    display: inline-block;
+    // height: 100%;
+  }
+}
+
+// .alloy-list .inner,
+// .alloy-cards {
+//   box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+// }
+// .alloy-list,
+// .alloy-cards {
+//   position: relative;
+//   margin-bottom: $base-margin * 2;
+//   border-radius: 0 0 $base-margin / 3 $base-margin / 3;
+//   // overflow: hidden;
+//
+//   @include media-breakpoint-up(md) {
+//     &.alloy-cards--large {
+//       margin-bottom: $base-margin * 4;
+//     }
+//   }
+//
+//   h1 {
+//     color: inherit;
+//   }
+//   img {
+//     width: 100%;
+//     height: auto;
+//   }
+//
+//   .inner {
+//     background-color: $brand-light;
+//   }
+// }
+// .alloy-content {
+//   position: relative;
+//   background-color: $brand-grey;
+//   padding: $base-margin;
+//
+//   .price {
+//     padding: $base-margin;
+//     position: absolute;
+//     top: -50px;
+//     right: $base-margin * 2;
+//     background-color: $brand-grey;
+//     font-weight: 800;
+//   }
+// }
+// @include media-breakpoint-down(md) {
+//   .alloy-current-item {
+//     .inner {
+//       display: flex;
+//       > * {
+//       }
+//     }
+//   }
+// }
+//
+// .alloy-list {
+//   &.active {
+//     .inner {
+//       // background-color: $brand-two;
+//     }
+//   }
+//   .inner {
+//     background-color: $brand-light;
+//   }
+// }

@@ -3,18 +3,21 @@ $main-sm-columns: 12;
 $sidebar-sm-columns: 4;
 
 // Colors
-$brand-one: #e64;
-$brand-two: #0ba;
+$brand-one: #8f57ea;
+// $brand-one-alpha: #8e2de2;
+$brand-two: #4a00e0;
 $brand-three: #8dd;
 $brand-four: #d16;
 
 $brand-dark: #000;
 $brand-light: #fff;
-$brand-grey: #ccc;
+$brand-grey: #dbd8e6;
 
 $base-margin: 15px;
 $base-alpha: 0.6;
 
+$font-base: 'Roboto', sans-serif;
+$font-header: 'Roboto Condensed', sans-serif;
 ///
 /// Viewport sized typography with minimum and maximum values
 ///

@@ -3,7 +3,11 @@ module.exports = {
   ** Headers of the page
   */
   router: {
+    // base: '/wish-list/',
+  },
+  generate: {
     base: '/wish-list/',
+    dir: 'docs',
   },
   css: ['@/assets/css/main.scss'],
   head: {

@@ -1,19 +1,14 @@
 <template>
-  <div class="alloy-list" :class="{ active: item.id == $store.state.currentItem.id }" @click="updateCurrentItem(item.id)">
+  <div class="alloy-list-items" :class="{ active: item.id == $store.state.currentItem.id }" @click="updateCurrentItem(item.id)">
     <div class="inner">
-      <div class="row">
 
-        <div class="col-3">
-          <div class="alloy-image">
-            <img :src="item.img" alt="">
-          </div>
-        </div>
-        <div class="col-9">
-          <h4>{{ item.title }}</h4>
-          <button>Bekijk</button>
-        </div>
-
+      <div class="alloy-image">
+        <img :src="item.img" alt="">
       </div>
+      <div class="alloy-content">
+        <h4 class="alloy-title">{{ item.title }} | <span>{{ item.price }}</span></h4>
+      </div>
+
     </div>
   </div>
 </template>

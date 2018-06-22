@@ -1,31 +1,30 @@
 <template>
-  <section>
+  <div>
 
-    <div class="container">
-      <alloy-header></alloy-header>
-      <div class="row">
+    <alloy-header></alloy-header>
 
-        <div class="col-md-7">
-          <transition name="flip" mode="out-in">
-            <alloy-currentitem :item="$store.state.currentItem" :key="$store.state.currentItem.id"></alloy-currentitem>
-          </transition>
-        </div>
+    <main>
 
-        <div class="col-md-5">
-          <div class="row">
-            <alloy-items v-for="item in $store.state.items" :key="item.id" :item="item" class="col-md-12"></alloy-items>
-          </div>
-        </div>
+      <section class="alloy-min-height">
+        <transition name="flip" mode="out-in">
+          <alloy-currentitem :item="$store.state.currentItem" :key="$store.state.currentItem.id"></alloy-currentitem>
+        </transition>
+      </section>
 
+      <section>
+        <alloy-items v-for="item in $store.state.items" :key="item.id" :item="item"></alloy-items>
+      </section>
 
-      </div>
-    </div>
+    </main>
 
-  </section>
+    <alloy-footer></alloy-footer>
+
+  </div>
 </template>
 
 <script>
 import Header from '~/components/Header.vue';
+import Footer from '~/components/Footer.vue';
 
 import Items from '~/components/Items.vue';
 import CurrentItem from '~/components/CurrentItem.vue';
@@ -52,6 +51,7 @@ export default {
     'alloy-items': Items,
     'alloy-currentitem': CurrentItem,
     'alloy-header': Header,
+    'alloy-footer': Footer,
   },
 
   methods: {
