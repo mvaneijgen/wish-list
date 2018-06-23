@@ -1,3 +1,12 @@
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/wish-list/',
+        },
+      }
+    : {};
+
 module.exports = {
   /*
   ** Headers of the page
@@ -7,10 +16,11 @@ module.exports = {
   },
   generate: {
     dir: 'docs',
-    router: {
-      base: '/wish-list/',
-    },
+    // router: {
+    //   base: '/wish-list/',
+    // },
   },
+  ...routerBase,
   css: ['@/assets/css/main.scss'],
   head: {
     title: 'wishlist',
