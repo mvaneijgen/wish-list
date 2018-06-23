@@ -43,25 +43,25 @@
       top: $base-margin;
       margin-right: $base-margin;
       z-index: 100;
-
-      animation-name: fade;
-      animation-duration: 600ms;
-      animation-delay: 0s;
-      animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
-      animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
-      animation-iteration-count: 1; // infinite or number
-      animation-fill-mode: both; // none, forwards, backwards, both
-      animation-play-state: running; // running, paused
+      //
+      // animation-name: fade;
+      // animation-duration: 600ms;
+      // animation-delay: 0s;
+      // animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
+      // animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
+      // animation-iteration-count: 1; // infinite or number
+      // animation-fill-mode: both; // none, forwards, backwards, both
+      // animation-play-state: running; // running, paused
     }
   }
-  @keyframes fade {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  // @keyframes fade {
+  //   0% {
+  //     opacity: 0;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
   .alloy-cards {
     transition: top;
     transition-duration: 0.3s;
