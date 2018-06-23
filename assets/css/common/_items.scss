@@ -32,7 +32,7 @@
     }
   }
 }
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(sm) {
   .alloy-min-height {
     min-height: 213px;
   }
@@ -220,7 +220,7 @@
 //     font-weight: 800;
 //   }
 // }
-// @include media-breakpoint-down(md) {
+// @include media-breakpoint-down(sm) {
 //   .alloy-current-item {
 //     .inner {
 //       display: flex;

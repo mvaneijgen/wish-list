@@ -41,10 +41,10 @@ export default {
         window.pageYOffset || document.documentElement.scrollTop;
       const elementPos = currentItem.offsetTop;
       console.log(scrollPos + ' ' + elementPos);
-      if (scrollPos + 20 >= elementPos) {
+      if (scrollPos + 60 >= elementPos) {
         main.classList.add('fixed');
       }
-      if (scrollPos - 60 < elementPos) {
+      if (scrollPos - 300 < elementPos) {
         main.classList.remove('fixed');
       }
     });

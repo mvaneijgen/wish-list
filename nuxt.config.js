@@ -30,10 +30,24 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' },
       { property: 'og:type', content: 'article' },
       { property: 'og:title', content: 'Wish list app | M van Eijgen' },
+      {
+        property: 'og:description',
+        content:
+          'Op de één of andere manier vinden mensen het lastig om iets voor mij als cadeau te bedenken, terwijl ik denk dat het super makkelijk is...',
+      },
       { property: 'og:url', content: 'https://mvaneijgen.nl/wish-list' },
-      { property: 'og:image', content: '/social.jpg' },
+      {
+        property: 'og:image',
+        content: 'https://mvaneijgen.nl/wish-list/social.jpg',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: 'https://mvaneijgen.nl/wish-list/favicon.ico',
+      },
+    ],
   },
   /*
   ** Customize the progress bar color
