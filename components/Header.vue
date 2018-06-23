@@ -34,7 +34,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '~/assets/css/common/_variables.scss';
 /* @import 'assets/css/common/variables.scss'; */
 /* @import '../assets/css/common/variables'; */
 /* .emoji {

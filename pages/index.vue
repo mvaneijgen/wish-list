@@ -46,6 +46,9 @@ export default {
   data() {
     return {};
   },
+  metaInfo: {
+    title: 'Default Title',
+  },
   middleware: 'api',
   components: {
     'alloy-items': Items,
@@ -67,7 +70,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '~/assets/css/common/_variables.scss';
+
 .flip-enter {
   /*transform: rotateY(0deg);*/
 }
@@ -75,7 +80,7 @@ export default {
 .flip-enter-active {
   /* animation: flip-in  0.5s ease-out forwards; */
   animation-name: flip-in;
-  animation-duration: 150ms;
+  animation-duration: 600ms;
   animation-delay: 0s;
   animation-timing-function: ease-out;
   animation-direction: alternate;
@@ -91,7 +96,7 @@ export default {
 .flip-leave-active {
   /* animation: flip-out 0.5s ease-out forwards; */
   animation-name: flip-out;
-  animation-duration: 150ms;
+  animation-duration: 600ms;
   animation-delay: 0s;
   animation-timing-function: ease-out;
   animation-direction: alternate;
@@ -100,7 +105,7 @@ export default {
   animation-play-state: running;
 }
 
-@keyframes flip-out {
+/* @keyframes flip-out {
   from {
     transform: rotateY(0deg);
   }
@@ -116,5 +121,114 @@ export default {
   to {
     transform: rotateY(0deg);
   }
+} */
+
+@keyframes flip-out {
+  0% {
+    transform: rotateY(0deg);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  30% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  60% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  100% {
+    transform: rotateY(90deg) translateY(0);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
 }
+
+@keyframes flip-in {
+  0% {
+    transform: rotateY(90deg);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  30% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  60% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  100% {
+    transform: rotateY(0deg) translateY(0);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+}
+
+/* /* Heavy flips
+/* @keyframes flip-out {
+  0% {
+    transform: rotateY(0deg);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  30% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  50% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  70% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  50% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  60% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  75% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  100% {
+    transform: rotateY(90deg) translateY(0);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+}
+
+@keyframes flip-in {
+  0% {
+    transform: rotateY(90deg);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  30% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  50% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  60% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  /* 50% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  60% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  75% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  100% {
+    transform: rotateY(0deg) translateY(0);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+} */
 </style>

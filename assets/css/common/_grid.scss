@@ -28,6 +28,7 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+footer,
 main {
   max-width: 1170px;
   margin-left: auto;
@@ -39,6 +40,7 @@ main {
   }
 }
 @include media-breakpoint-up(md) {
+  footer,
   main {
     display: flex;
     > section {
@@ -47,60 +49,8 @@ main {
     }
   }
 }
-// .row {
-//   // overflow: hidden;
-// }
-//
-// .container {
-//   padding-top: $base-margin;
-//
-//   > .row {
-//     padding-bottom: $base-margin;
-//   }
-// }
-//
-// .padding--medium {
-//   padding-top: $base-margin;
-//
-//   .row {
-//     padding-bottom: $base-margin;
-//   }
-// }
-//
-// @include media-breakpoint-up(md) {
-//   .container {
-//     padding-top: $base-margin * 2;
-//
-//     > .row {
-//       padding-bottom: $base-margin * 2;
-//     }
-//   }
-//
-//   .padding--medium {
-//     padding-top: $base-margin;
-//
-//     .row {
-//       padding-bottom: $base-margin;
-//     }
-//   }
-// }
-//
-// .padding--none {
-//   padding-top: 0;
-//
-//   .row {
-//     padding-bottom: 0;
-//   }
-// }
-//
-// .padding--none--gutter {
-//   padding: 0;
-//
-//   > .row {
-//     padding: 0;
-//
-//     > [class^='col-'] {
-//       padding: 0;
-//     }
-//   }
-// }
+footer {
+  a {
+    color: $brand-light;
+  }
+}

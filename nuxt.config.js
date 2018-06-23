@@ -23,11 +23,15 @@ module.exports = {
   ...routerBase,
   css: ['@/assets/css/main.scss'],
   head: {
-    title: 'wishlist',
+    title: 'Wishlist app | M van Eijgen',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Nuxt.js project' },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: 'Wish list app | M van Eijgen' },
+      { property: 'og:url', content: 'https://mvaneijgen.nl/wish-list' },
+      { property: 'og:image', content: '/social.jpg' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
