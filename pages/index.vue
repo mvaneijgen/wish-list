@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import Header from '~/components/Header.vue';
-import Footer from '~/components/Footer.vue';
+import Header from "~/components/Header.vue";
+import Footer from "~/components/Footer.vue";
 
-import Items from '~/components/Items.vue';
-import CurrentItem from '~/components/CurrentItem.vue';
+import Items from "~/components/Items.vue";
+import CurrentItem from "~/components/CurrentItem.vue";
 
 // import axios from 'axios';
 //
@@ -47,31 +47,47 @@ export default {
     return {};
   },
   metaInfo: {
-    title: 'Default Title',
+    title: "Default Title"
   },
-  middleware: 'api',
+  middleware: "api",
   components: {
-    'alloy-items': Items,
-    'alloy-currentitem': CurrentItem,
-    'alloy-header': Header,
-    'alloy-footer': Footer,
+    "alloy-items": Items,
+    "alloy-currentitem": CurrentItem,
+    "alloy-header": Header,
+    "alloy-footer": Footer
   },
+  mounted() {
+    const elementPos = currentItem.offsetTop;
 
-  methods: {
-    nextBday() {
-      var oneDay = 24 * 60 * 60 * 1000;
-      var secondDate = new Date(new Date().getFullYear() + 1, 3, 5);
-      var firstDate = new Date();
-      return Math.round(
-        Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay),
-      );
-    },
-  },
+    window.addEventListener("scroll", event => {
+      // console.log(event);
+      const currentItem = document.querySelector(".alloy-min-height");
+      const main = document.querySelector("main");
+      const scrollPos =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      const srollDownThreshold = scrollPos + 60;
+      console.log(srollDownThreshold + " " + elementPos);
+
+      if (srollDownThreshold >= elementPos) {
+        main.classList.add("fixed");
+      }
+      // const srollUpThreshold = scrollPos - 300;
+      // if (main.classList.contains('fixed')) {
+      // console.log(srollUpThreshold + ' ' + elementPos);
+      if (srollDownThreshold < elementPos) {
+        main.classList.remove("fixed");
+      }
+      // }
+    });
+  }, // Be sure all elements are drawn
+
+  methods: {}
 };
 </script>
 
 <style scoped lang="scss">
-@import '~/assets/css/common/_variables.scss';
+@import "~/assets/css/common/_variables.scss";
 
 .flip-enter {
   /*transform: rotateY(0deg);*/

@@ -20,10 +20,10 @@
 
 <script>
 export default {
-  props: ['item'],
+  props: ["item"],
   data() {
     return {
-      title: 'CurrentItem',
+      title: "CurrentItem"
     };
   }, // End data
   // computed: {},
@@ -31,32 +31,7 @@ export default {
   // watch: {},
 
   // // Live cicle hook. Check for more https://vuejs.org/v2/api/
-  created() {}, // Each time the app is created (once?)
-  mounted() {
-    const elementPos = currentItem.offsetTop;
-
-    window.addEventListener('scroll', event => {
-      // console.log(event);
-      const currentItem = document.querySelector('#currentItem');
-      const main = document.querySelector('main');
-      const scrollPos =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      const srollDownThreshold = scrollPos + 60;
-      console.log(srollDownThreshold + ' ' + elementPos);
-
-      if (srollDownThreshold >= elementPos) {
-        main.classList.add('fixed');
-      }
-      // const srollUpThreshold = scrollPos - 300;
-      // if (main.classList.contains('fixed')) {
-      // console.log(srollUpThreshold + ' ' + elementPos);
-      if (srollDownThreshold < elementPos) {
-        main.classList.remove('fixed');
-      }
-      // }
-    });
-  }, // Be sure all elements are drawn
+  created() {} // Each time the app is created (once?)
 };
 </script>
 
