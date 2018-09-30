@@ -135,6 +135,7 @@
   background-color: $brand-one;
   margin-bottom: $base-margin * 2;
   width: 100%;
+  // transform: scale(0);
   transition: transform, background-color;
   transition-duration: 0.3s;
   transition-timing-function: ease;
@@ -240,3 +241,104 @@
 //     background-color: $brand-light;
 //   }
 // }
+.pop-enter {
+  /*transform: rotateY(0deg);*/
+}
+
+.pop-enter-active {
+  /* animation: pop-in  0.5s ease-out forwards; */
+  animation-name: pop-in;
+  animation-duration: 600ms;
+  // animation-delay: 0s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  transform: scale(0) !important;
+
+  $elements: 15;
+  @for $i from 0 to $elements {
+    &:nth-child(#{$i}) {
+      animation-delay: 150ms * $i;
+    }
+  }
+}
+
+.pop-leave {
+  /*transform: rotateY(0deg);*/
+}
+
+.pop-leave-active {
+  /* animation: pop-out 0.5s ease-out forwards; */
+  animation-name: pop-out;
+  animation-duration: 600ms;
+  animation-delay: 0s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+  }
+  // 30% {
+  //   transform: scale(0);
+  //   box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  // }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: $brand-light;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
