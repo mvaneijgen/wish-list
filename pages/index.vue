@@ -49,7 +49,7 @@
     metaInfo: {
       title: "Default Title"
     },
-    middleware: "api",
+    // middleware: "api",
     components: {
       "alloy-items": Items,
       "alloy-currentitem": CurrentItem,
@@ -67,7 +67,7 @@
           window.pageYOffset || document.documentElement.scrollTop;
 
         const srollDownThreshold = scrollPos + 60;
-        console.log(srollDownThreshold + " " + elementPos);
+        // console.log(srollDownThreshold + " " + elementPos);
 
         if (srollDownThreshold >= elementPos) {
           main.classList.add("fixed");
@@ -81,48 +81,78 @@
         // }
       });
     }, // Be sure all elements are drawn
+    async mounted () {
+      this.$axios.setHeader('Authorization', 'Bearer f5125aed0f383716e33f9dedf5715b9ace5c3825');
 
+      await this.$axios
+        .get('https://beta.todoist.com/API/v8/tasks?project_id=2187923865')
+        .then(response => {
+          console.log(response);
+          const allItems = response.data;
+
+          let resultItems = [];
+
+          allItems.forEach(element => {
+            let content = element.content.split(' | ');
+            let itemObj = {
+              id: element.id,
+              title: content[0],
+              description: content[1],
+              price: content[2],
+              place: content[3],
+              img: content[4],
+            };
+
+            resultItems.push(itemObj);
+          });
+          this.$store.commit('add', resultItems);
+        })
+        .catch(function(error) {
+          this.$store.commit('error', error);
+          // console.log(error);
+        });
+    },
     methods: {}
   };
 
 </script>
 
 <style scoped lang="scss">
-  @import "~/assets/css/common/_variables.scss";
+@import "~/assets/css/common/_variables.scss";
 
-  .flip-enter {
-    /*transform: rotateY(0deg);*/
-  }
+.flip-enter {
+  /*transform: rotateY(0deg);*/
+}
 
-  .flip-enter-active {
-    /* animation: flip-in  0.5s ease-out forwards; */
-    animation-name: flip-in;
-    animation-duration: 600ms;
-    animation-delay: 0s;
-    animation-timing-function: ease-out;
-    animation-direction: alternate;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
-  }
+.flip-enter-active {
+  /* animation: flip-in  0.5s ease-out forwards; */
+  animation-name: flip-in;
+  animation-duration: 600ms;
+  animation-delay: 0s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
 
-  .flip-leave {
-    /*transform: rotateY(0deg);*/
-  }
+.flip-leave {
+  /*transform: rotateY(0deg);*/
+}
 
-  .flip-leave-active {
-    /* animation: flip-out 0.5s ease-out forwards; */
-    animation-name: flip-out;
-    animation-duration: 600ms;
-    animation-delay: 0s;
-    animation-timing-function: ease-out;
-    animation-direction: alternate;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
-  }
+.flip-leave-active {
+  /* animation: flip-out 0.5s ease-out forwards; */
+  animation-name: flip-out;
+  animation-duration: 600ms;
+  animation-delay: 0s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
 
-  /* @keyframes flip-out {
+/* @keyframes flip-out {
   from {
     transform: rotateY(0deg);
   }
@@ -140,45 +170,45 @@
   }
 } */
 
-  @keyframes flip-out {
-    0% {
-      transform: rotateY(0deg);
-      box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
-    30% {
-      transform: rotateY(0deg) translateY(-20px);
-      box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
-    60% {
-      transform: rotateY(90deg) translateY(-20px);
-      box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
-    100% {
-      transform: rotateY(90deg) translateY(0);
-      box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
+@keyframes flip-out {
+  0% {
+    transform: rotateY(0deg);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
   }
-
-  @keyframes flip-in {
-    0% {
-      transform: rotateY(90deg);
-      box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
-    30% {
-      transform: rotateY(90deg) translateY(-20px);
-      box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
-    60% {
-      transform: rotateY(0deg) translateY(-20px);
-      box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
-    100% {
-      transform: rotateY(0deg) translateY(0);
-      box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
-    }
+  30% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
   }
+  60% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  100% {
+    transform: rotateY(90deg) translateY(0);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+}
 
-  /* /* Heavy flips
+@keyframes flip-in {
+  0% {
+    transform: rotateY(90deg);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  30% {
+    transform: rotateY(90deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  60% {
+    transform: rotateY(0deg) translateY(-20px);
+    box-shadow: 5px 25px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+  100% {
+    transform: rotateY(0deg) translateY(0);
+    box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
+  }
+}
+
+/* /* Heavy flips
 /* @keyframes flip-out {
   0% {
     transform: rotateY(0deg);
@@ -248,5 +278,4 @@
     box-shadow: 5px 5px 30px 0 rgba($brand-dark, $base-alpha/2);
   }
 } */
-
 </style>

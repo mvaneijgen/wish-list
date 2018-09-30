@@ -27,6 +27,11 @@ module.exports = {
     //   base: '/wish-list/',
     // },
   },
+  modules: ["@nuxtjs/axios"],
+
+  axios: {
+    // proxyHeaders: false
+  },
   ...routerBase,
   css: ["@/assets/css/main.scss"],
   head: {
