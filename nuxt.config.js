@@ -27,8 +27,11 @@ module.exports = {
     //   base: '/wish-list/',
     // },
   },
-  modules: ["@nuxtjs/axios"],
-
+  modules: ["@nuxtjs/axios", "@nuxtjs/pwa"],
+  manifest: {
+    name: "Wishlist app | M van Eijgen",
+    lang: "nl",
+  },
   axios: {
     // proxyHeaders: false
   },

@@ -1,14 +1,21 @@
-import Vuex from 'vuex';
+import Vuex from "vuex";
 
 const createStore = () => {
   return new Vuex.Store({
     state: {
       items: [],
-      currentItem: {},
+      currentItem: {
+        id: "0",
+        title: "Loading...",
+        description: "Content is loading, shouldn't be more than a second",
+        price: "€",
+        place: "",
+        img: "https://i.imgur.com/TUnsoXz.jpg",
+      },
       errors: [],
-      title: 'Wish List',
-      by: 'Mitchel van Eijgen',
-      description: '',
+      title: "Wish List",
+      by: "Mitchel van Eijgen",
+      description: "",
     },
     mutations: {
       add(state, payload) {

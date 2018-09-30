@@ -2,8 +2,6 @@
   <div>
 
     <alloy-header></alloy-header>
-    <div class="spinner" v-if="!loaded"></div>
-
     <main>
       <section class="alloy-min-height">
         <transition name="flip" mode="out-in">
@@ -12,6 +10,8 @@
       </section>
 
       <section>
+        <div class="spinner" v-if="!loaded"></div>
+
         <transition-group name="pop">
           <alloy-items v-for="item in $store.state.items" :key="item.id" :item="item"></alloy-items>
         </transition-group>
@@ -46,7 +46,10 @@
       "alloy-header": Header,
       "alloy-footer": Footer
     },
-    mounted() {
+    // mounted() {
+      
+    // }, // Be sure all elements are drawn
+    async mounted () {
       const elementPos = currentItem.offsetTop;
 
       window.addEventListener("scroll", event => {
@@ -57,7 +60,7 @@
           window.pageYOffset || document.documentElement.scrollTop;
 
         const srollDownThreshold = scrollPos + 60;
-        // console.log(srollDownThreshold + " " + elementPos);
+        console.log(srollDownThreshold + " " + elementPos);
 
         if (srollDownThreshold >= elementPos) {
           main.classList.add("fixed");
@@ -70,8 +73,7 @@
         }
         // }
       });
-    }, // Be sure all elements are drawn
-    async mounted () {
+
       this.$axios.setHeader('Authorization', 'Bearer f5125aed0f383716e33f9dedf5715b9ace5c3825');
 
       await this.$axios
