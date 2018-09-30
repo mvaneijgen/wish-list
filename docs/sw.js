@@ -39,6 +39,8 @@ workbox.routing.registerRoute(new RegExp('/wish-list/_nuxt/.*'), workbox.strateg
 
 workbox.routing.registerRoute(new RegExp('/wish-list/.*'), workbox.strategies.networkFirst({}), 'GET')
 
+workbox.routing.registerRoute(new RegExp('https://mvaneijgen.nl/wish-list/.*'), workbox.strategies.cacheFirst({}), 'GET')
+
 
 
 

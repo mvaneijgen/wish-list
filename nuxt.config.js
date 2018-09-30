@@ -32,6 +32,18 @@ module.exports = {
     name: "Wishlist app | M van Eijgen",
     lang: "nl",
   },
+  workbox: {
+    runtimeCaching: [
+      {
+        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
+        urlPattern: "https://mvaneijgen.nl/wish-list/.*",
+        // Defaults to `networkFirst` if omitted
+        handler: "cacheFirst",
+        // Defaults to `GET` if omitted
+        method: "GET",
+      },
+    ],
+  },
   axios: {
     // proxyHeaders: false
   },
