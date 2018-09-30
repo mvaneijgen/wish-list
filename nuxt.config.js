@@ -29,14 +29,33 @@ module.exports = {
   },
   modules: ["@nuxtjs/axios", "@nuxtjs/pwa"],
   manifest: {
-    name: "Wishlist app | M van Eijgen",
+    name: "Wish list app | M van Eijgen",
+    short_name: "Wish List",
     lang: "nl",
+    icons: [
+      {
+        src: "android-chrome-96x96.png",
+        sizes: "96x96",
+        type: "image/png",
+      },
+    ],
+    theme_color: "#8f57ea",
+    background_color: "#8f57ea",
+    display: "standalone",
   },
   workbox: {
     runtimeCaching: [
       {
         // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
         urlPattern: "https://mvaneijgen.nl/wish-list/.*",
+        // Defaults to `networkFirst` if omitted
+        handler: "cacheFirst",
+        // Defaults to `GET` if omitted
+        method: "GET",
+      },
+      {
+        // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
+        urlPattern: "https://i.imgur.com/.*",
         // Defaults to `networkFirst` if omitted
         handler: "cacheFirst",
         // Defaults to `GET` if omitted
@@ -50,7 +69,7 @@ module.exports = {
   ...routerBase,
   css: ["@/assets/css/main.scss"],
   head: {
-    title: "Wishlist app | M van Eijgen",
+    title: "Wish list app | M van Eijgen",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },

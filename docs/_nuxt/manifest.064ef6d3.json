@@ -1,0 +1,1 @@
+{"name":"Wish list app | M van Eijgen","short_name":"Wish List","description":"Nuxt.js project","publicPath":"/wish-list//_nuxt/","icons":[{"src":"android-chrome-96x96.png","sizes":"96x96","type":"image/png"}],"start_url":"/wish-list/?standalone=true","display":"standalone","background_color":"#8f57ea","theme_color":"#8f57ea","lang":"nl"}

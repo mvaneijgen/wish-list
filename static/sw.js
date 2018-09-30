@@ -4,15 +4,15 @@ importScripts('/wish-list/_nuxt/workbox.5c678697.js')
 
 workbox.precaching.precacheAndRoute([
   {
-    "url": "/wish-list/_nuxt/app.18b65171756ebb574026.js",
-    "revision": "5156ed8b030ffaa5144eccd42c63dd13"
+    "url": "/wish-list/_nuxt/app.6bf9b282cb781d8edeaa.js",
+    "revision": "6ecf928459d96320b263100dea132617"
   },
   {
     "url": "/wish-list/_nuxt/layouts/default.91b1413d3a022cbec4a7.js",
     "revision": "55aa4e085d5c475695235b078b136d71"
   },
   {
-    "url": "/wish-list/_nuxt/manifest.b5d25dabbfac542ef471.js",
+    "url": "/wish-list/_nuxt/manifest.bd51ecfc6034527d7ead.js",
     "revision": "9da65b50f79c9c5e6794c149e45acbf6"
   },
   {
@@ -40,6 +40,8 @@ workbox.routing.registerRoute(new RegExp('/wish-list/_nuxt/.*'), workbox.strateg
 workbox.routing.registerRoute(new RegExp('/wish-list/.*'), workbox.strategies.networkFirst({}), 'GET')
 
 workbox.routing.registerRoute(new RegExp('https://mvaneijgen.nl/wish-list/.*'), workbox.strategies.cacheFirst({}), 'GET')
+
+workbox.routing.registerRoute(new RegExp('https://i.imgur.com/.*'), workbox.strategies.cacheFirst({}), 'GET')
 
 
 
