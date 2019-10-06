@@ -24,90 +24,104 @@
 </template>
 
 <script>
-  import Header from "~/components/Header.vue";
-  import Footer from "~/components/Footer.vue";
+import Header from "~/components/Header.vue";
+import Footer from "~/components/Footer.vue";
 
-  import Items from "~/components/Items.vue";
-  import CurrentItem from "~/components/CurrentItem.vue";
+import Items from "~/components/Items.vue";
+import CurrentItem from "~/components/CurrentItem.vue";
 
-  export default {
-    data() {
-      return {
-        loaded: false,
-      };
-    },
-    metaInfo: {
-      title: "Wish List"
-    },
-    // middleware: "api",
-    components: {
-      "alloy-items": Items,
-      "alloy-currentitem": CurrentItem,
-      "alloy-header": Header,
-      "alloy-footer": Footer
-    },
-    // mounted() {
-      
-    // }, // Be sure all elements are drawn
-    async mounted () {
-      const elementPos = currentItem.offsetTop;
+export default {
+  data() {
+    return {
+      loaded: false,
+    };
+  },
+  metaInfo: {
+    title: "Wish List",
+  },
+  // middleware: "api",
+  components: {
+    "alloy-items": Items,
+    "alloy-currentitem": CurrentItem,
+    "alloy-header": Header,
+    "alloy-footer": Footer,
+  },
+  // mounted() {
 
-      window.addEventListener("scroll", event => {
-        // console.log(event);
-        const currentItem = document.querySelector(".alloy-min-height");
-        const main = document.querySelector("main");
-        const scrollPos =
-          window.pageYOffset || document.documentElement.scrollTop;
+  // }, // Be sure all elements are drawn
+  async mounted() {
+    const elementPos = currentItem.offsetTop;
 
-        const srollDownThreshold = scrollPos + 60;
-        console.log(srollDownThreshold + " " + elementPos);
+    window.addEventListener("scroll", event => {
+      // console.log(event);
+      const currentItem = document.querySelector(".alloy-min-height");
+      const main = document.querySelector("main");
+      const scrollPos =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-        if (srollDownThreshold >= elementPos) {
-          main.classList.add("fixed");
-        }
-        // const srollUpThreshold = scrollPos - 300;
-        // if (main.classList.contains('fixed')) {
-        // console.log(srollUpThreshold + ' ' + elementPos);
-        if (srollDownThreshold < elementPos) {
-          main.classList.remove("fixed");
-        }
-        // }
-      });
+      const srollDownThreshold = scrollPos + 60;
+      // console.log(srollDownThreshold + " " + elementPos);
 
-      this.$axios.setHeader('Authorization', 'Bearer f5125aed0f383716e33f9dedf5715b9ace5c3825');
+      if (srollDownThreshold >= elementPos) {
+        main.classList.add("fixed");
+      }
+      // const srollUpThreshold = scrollPos - 300;
+      // if (main.classList.contains('fixed')) {
+      // console.log(srollUpThreshold + ' ' + elementPos);
+      if (srollDownThreshold < elementPos) {
+        main.classList.remove("fixed");
+      }
+      // }
+    });
 
-      await this.$axios
-        .get('https://beta.todoist.com/API/v8/tasks?project_id=2187923865')
-        .then(response => {
-          // console.log(response);
-          this.loaded = true;
-          const allItems = response.data;
+    this.$axios.setHeader(
+      "Authorization",
+      "Bearer f5125aed0f383716e33f9dedf5715b9ace5c3825",
+    );
 
-          let resultItems = [];
+    await this.$axios
+      // .get(
+      //   "https://cors-anywhere.herokuapp.com/https://beta.todoist.com/API/v8/tasks?project_id=2187923865",
+      // )
+      // .get("https://beta.todoist.com/API/v8/tasks?project_id=2187923865")
+      // .get("https://beta.todoist.com/API/v8/tasks")
+      // .get("https://api.todoist.com/sync/v8/sync")
+      // .get("https://beta.todoist.com/API/v8/projects/2187923865")
+      // .get("https://api.todoist.com/sync/v8/tasks?project_id=2187923865")
+      // .get("https://beta.todoist.com/API/v8/projects")
+      .get("https://api.todoist.com/rest/v1/tasks?project_id=2187923865")
+      // .get(
+      //   "https://cors-anywhere.herokuapp.com/https://beta.todoist.com/API/v8/tasks",
+      // )
+      .then(response => {
+        // console.log(response);
+        this.loaded = true;
+        const allItems = response.data;
 
-          allItems.forEach(element => {
-            let content = element.content.split(' | ');
-            let itemObj = {
-              id: element.id,
-              title: content[0],
-              description: content[1],
-              price: content[2],
-              place: content[3],
-              img: content[4],
-            };
+        let resultItems = [];
 
-            resultItems.push(itemObj);
-          });
-          this.$store.commit('add', resultItems);
-        })
-        .catch(function(error) {
-          this.$store.commit('error', error);
-          // console.log(error);
+        allItems.forEach(element => {
+          let content = element.content.split(" | ");
+          let itemObj = {
+            id: element.id,
+            title: content[0],
+            description: content[1],
+            price: content[2],
+            place: content[3],
+            img: content[4],
+          };
+
+          resultItems.push(itemObj);
         });
-    },
-    methods: {}
-  };
-
+        this.$store.commit("add", resultItems);
+      })
+      .catch(function(error) {
+        this.$store.commit("error", error);
+        // console.log(error);
+      });
+  },
+  methods: {},
+};
 </script>
 
 <style scoped lang="scss">
